@@ -1,9 +1,18 @@
 import React from 'react';
+import Banner from './Banner';
+import Partners from './Partners/Partners';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <div>
-            <h1>this is Home</h1>
+            <Helmet>
+                <title>
+                    EduLoop
+                </title>
+            </Helmet>
+            <Banner></Banner>
+            <Partners></Partners>
         </div>
     );
 };

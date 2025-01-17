@@ -1,13 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Sheared/Navbar/Navbar";
 import Footer from "../Sheared/Footer/Footer";
 
 const Main = () => {
+    const location = useLocation();
+    const isSignIn = location.pathname.includes("/signIn")
     return (
         <div>
-            <Navbar></Navbar>
+            {isSignIn || <Navbar></Navbar>}
             <Outlet></Outlet>
-            <Footer></Footer>
+            {isSignIn || <Footer></Footer>}
         </div>
     );
 };
