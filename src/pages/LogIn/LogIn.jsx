@@ -3,7 +3,17 @@ import signInLottie from '../../assets/lottie/SignIn.json'
 import Lottie from 'lottie-react';
 import { Link } from 'react-router-dom';
 
-const SignIn = () => {
+const LogIn = () => {
+
+    const handleSignIn = event => {
+        event.preventDefault();
+        const form =event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+    }
+
+
     return (
         <div>
             <div className="hero bg-teal-50 min-h-screen">
@@ -13,7 +23,7 @@ const SignIn = () => {
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border-2 border-teal-300 shadow-teal-300 ">
                         {/* top text */}
-                        <h1 className='text-xl md:text-4xl font-bold pt-5 px-5'>Sign In:</h1>
+                        <h1 className='text-xl md:text-4xl font-bold pt-5 px-5'>Log In:</h1>
                         {/* google logIn botton */}
                         <div className="form-control mt-5 px-5">
                             <button
@@ -24,25 +34,25 @@ const SignIn = () => {
                             </button>
                             <h1 className='divider'>Or</h1>
                         </div>
-                        <form className="px-5 pb-8">
+                        <form onSubmit={handleSignIn} className="px-5 pb-8">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" placeholder="email" name='email' className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" required />
+                                <input type="password" placeholder="password" name='password' className="input input-bordered" required />
                             </div>
-                            <div className="form-control mt-6">
-                                <button className="btn bg-teal-300">Login</button>
+                            <div className="form-control mt-5">
+                                <input className='btn bg-teal-300 font-bold text-lg' type="submit" value="Log In" />
                             </div>
-                            <span className="mt-5">
-                                Don't you have an account? <Link to="/signUp" className="font-bold">Sign Up</Link>
-                            </span>
+                            <div className="mt-2">
+                                Don't you have an account? <Link to="/register" className="font-bold">Register</Link>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -51,4 +61,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default LogIn;

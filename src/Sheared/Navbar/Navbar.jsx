@@ -49,7 +49,7 @@ const Navbar = () => {
                 </div>
                 {/* Right side button */}
                 <div className="navbar-end">
-                    <Link to="/signIn" className="btn text-gray-800 bg-teal-400 hover:bg-teal-500">Sign In</Link>
+                    <Link to="/logIn" className="btn text-gray-800 bg-teal-400 hover:bg-teal-500">Log In</Link>
                 </div>
             </div>
         </>
