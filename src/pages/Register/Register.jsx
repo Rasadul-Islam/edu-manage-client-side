@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import registerLottie from '../../assets/lottie/SignUp.json';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -49,12 +51,23 @@ const Register = () => {
         try {
             const result = await createUser(email, password);
             await updateUserProfile(name, photoURL);
-            Swal.fire({
-                icon: "success",
-                title: "Registration successful!",
-                showConfirmButton: false,
-                timer: 1500,
-            });
+
+            const userInfo ={
+                name: name,
+                email: email,
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res=>{
+                if(res.data.insertedId){
+                    console.log('user added to the data base');
+                    Swal.fire({
+                        icon: "success",
+                        title: "Registration successful!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            })
             // console.log("User created successfully:", result.user);
         } catch (error) {
             console.error("Error creating user:", error);
