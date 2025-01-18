@@ -9,12 +9,13 @@ import Register from "../pages/Register/Register";
 import LogIn from "../pages/LogIn/LogIn";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../utility/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement: <h1>Here Have some 404 not found Error</h1>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
