@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const LogIn = () => {
 
@@ -11,11 +12,50 @@ const LogIn = () => {
     const location = useLocation();
     const from = location?.state || "/";
     const { logInUser, logInWithGoogle } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
 
     // Handle Google Sign-In
-    const handleGoogleLogIn = async () => {
+    const handleGoogleLogIn = () => {
+        logInWithGoogle()
+        .then(result=>{
+            console.log(result.user);
+            const userInfo={
+                name: result.user?.displayName,
+                email: result.user?.email,
+            }
+            axiosPublic.post('/users', userInfo)
+            .then(res=>{
+                // console.log(res.data);
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "LogIn Successful",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                navigate(from, { replace: true })
+            })
+        })
+
+        // catch (error) {
+        //     // console.log(error)
+        //     Swal.fire({
+        //         position: "top-center",
+        //         icon: "error",
+        //         title: "LogIn Faild",
+        //         showConfirmButton: false,
+        //         timer: 1000
+        //     });
+        // }
+    }
+    // Handle email and password LogIn
+    const handleLogIn = async e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
         try {
-            await logInWithGoogle()
+            await logInUser(email, password)
             Swal.fire({
                 position: "top-center",
                 icon: "success",
@@ -26,43 +66,15 @@ const LogIn = () => {
             navigate(from, { replace: true })
         }
         catch (error) {
-            // console.log(error)
-            Swal.fire({
-                position: "top-center",
-                icon: "error",
-                title: "LogIn Faild",
-                showConfirmButton: false,
-                timer: 1000
-            });
-        }
-    }
-    // Handle email and password LogIn
-    const handleLogIn= async e=>{
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        try{
-            await logInUser(email, password)
-            Swal.fire({
-                position: "top-center",
-                icon: "success",
-                title: "LogIn Successful",
-                showConfirmButton: false,
-                timer: 1000
-              });
-            navigate(from, {replace:true})            
-        }
-        catch(error){
             console.log(error)
             Swal.fire({
                 position: "top-center",
                 icon: "error",
                 title: "LogIn Faild",
-                text:"Check your Email or Password and try again",
+                text: "Check your Email or Password and try again",
                 showConfirmButton: false,
                 timer: 2000
-              });
+            });
         }
     }
 
