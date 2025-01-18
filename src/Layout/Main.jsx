@@ -4,7 +4,7 @@ import Footer from "../Sheared/Footer/Footer";
 
 const Main = () => {
     const location = useLocation();
-    const isSignIn = location.pathname.includes("/signIn")
+    const isSignIn = location.pathname.includes("/logIn")
     return (
         <div>
             {isSignIn || <Navbar></Navbar>}

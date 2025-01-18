@@ -1,16 +1,69 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import signInLottie from '../../assets/lottie/SignIn.json'
 import Lottie from 'lottie-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const LogIn = () => {
 
-    const handleSignIn = event => {
-        event.preventDefault();
-        const form =event.target;
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state || "/";
+    const { logInUser, logInWithGoogle } = useContext(AuthContext);
+
+    // Handle Google Sign-In
+    const handleGoogleLogIn = async () => {
+        try {
+            await logInWithGoogle()
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "LogIn Successful",
+                showConfirmButton: false,
+                timer: 1000
+            });
+            navigate(from, { replace: true })
+        }
+        catch (error) {
+            // console.log(error)
+            Swal.fire({
+                position: "top-center",
+                icon: "error",
+                title: "LogIn Faild",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+    }
+    // Handle email and password LogIn
+    const handleLogIn= async e=>{
+        e.preventDefault();
+        const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        try{
+            await logInUser(email, password)
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "LogIn Successful",
+                showConfirmButton: false,
+                timer: 1000
+              });
+            navigate(from, {replace:true})            
+        }
+        catch(error){
+            console.log(error)
+            Swal.fire({
+                position: "top-center",
+                icon: "error",
+                title: "LogIn Faild",
+                text:"Check your Email or Password and try again",
+                showConfirmButton: false,
+                timer: 2000
+              });
+        }
     }
 
 
@@ -27,6 +80,7 @@ const LogIn = () => {
                         {/* google logIn botton */}
                         <div className="form-control mt-5 px-5">
                             <button
+                                onClick={handleGoogleLogIn}
                                 className="btn bg-transparent font-semibold text-lg"
                             >
                                 <img src="https://i.ibb.co.com/ZdHFgMk/png-clipart-google-google.png" alt="Google Logo" className='w-8 h-8 bg-transparent rounded-full' />
@@ -34,7 +88,7 @@ const LogIn = () => {
                             </button>
                             <h1 className='divider'>Or</h1>
                         </div>
-                        <form onSubmit={handleSignIn} className="px-5 pb-8">
+                        <form onSubmit={handleLogIn} className="px-5 pb-8">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
