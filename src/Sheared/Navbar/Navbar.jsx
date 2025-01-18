@@ -1,14 +1,74 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import { FiLogOut } from 'react-icons/fi';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+    const { user, logOutUser } = useContext(AuthContext);
 
     const navOptions = <>
         <li><Link to='/' className='hover:font-bold hover:text-teal-500'>Home</Link ></li>
         <li><Link to='/allClasses' className='hover:font-bold hover:text-teal-500'>All Classes</Link ></li>
         <li><Link to='/teachOnEdu' className='hover:font-bold hover:text-teal-500'>Teach on EduLoop</Link ></li>
-        
+
     </>
+    // User LogOut function
+    const handleLogOut = () => {
+        // 
+        //     .then(() => {
+        //         Swal.fire({
+        //             position: "top-end",
+        //             icon: "success",
+        //             title: "Log Out Success",
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //         });
+        //     })
+        //     .catch(error => {
+        //         Swal.fire({
+        //             icon: "error",
+        //             title: "Oops...",
+        //             text: "Something went wrong!",
+        //         });
+        //     })
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You want to Log Out!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Log Out!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOutUser();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Log Out Success",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "You are Stay Here!",
+                    icon: "error"
+                });
+            }
+        });
+    }
 
     return (
         <>
@@ -49,9 +109,39 @@ const Navbar = () => {
                 </div>
                 {/* Right side button */}
                 <div className="navbar-end">
-                    <Link to="/logIn" className="btn text-gray-800 bg-teal-400 hover:bg-teal-500">Log In</Link>
+                    {user ? <>
+
+
+
+                        {/* Have User LogIn */}
+                        <div className="dropdown dropdown-bottom dropdown-end">
+                            <div tabIndex={0} role="button" className=" m-1 border-2 border-teal-400 rounded-full"><img
+                                src={user?.photoURL || "https://i.ibb.co/61HT020/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDIz-LTAx-L3-Jt-Nj-A5-LXNvb-Glka-WNvbi13-LTAw-Mi1w-Ln-Bu.jpg"}
+                                alt="User Avatar"
+                                className="w-10 h-10 rounded-full bg-gray-200"
+                            />
+                            </div>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+
+                                <li><a>Item 2</a></li>
+                                <li><button
+                                    onClick={handleLogOut}
+                                    className="hover:bg-red-400 hover:font-bold"
+                                >
+                                    Logout <FiLogOut />
+                                </button></li>
+                            </ul>
+                        </div>
+                    </>
+                        :
+                        <>
+                            {/* Not LogIn user */}
+                            <Link to="/logIn" className="btn text-gray-800 bg-teal-400 hover:bg-teal-500">Log In</Link>
+                        </>
+                    }
+
                 </div>
-            </div>
+            </div >
         </>
     );
 };
