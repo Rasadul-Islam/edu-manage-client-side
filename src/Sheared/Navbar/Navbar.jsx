@@ -15,23 +15,6 @@ const Navbar = () => {
     </>
     // User LogOut function
     const handleLogOut = () => {
-        // 
-        //     .then(() => {
-        //         Swal.fire({
-        //             position: "top-end",
-        //             icon: "success",
-        //             title: "Log Out Success",
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //         });
-        //     })
-        //     .catch(error => {
-        //         Swal.fire({
-        //             icon: "error",
-        //             title: "Oops...",
-        //             text: "Something went wrong!",
-        //         });
-        //     })
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: "btn btn-success",
@@ -120,6 +103,7 @@ const Navbar = () => {
                                 className="w-10 h-10 rounded-full bg-gray-200"
                             />
                             </div>
+                            {/* Dropdown button */}
                             <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
                                 <li className='font-bold  py-2 text-center text-base'>{user.displayName}</li>
                                 <li><Link to="/dashboard">Dashboard</Link></li>
@@ -136,6 +120,7 @@ const Navbar = () => {
                         <>
                             {/* Not LogIn user */}
                             <Link to="/logIn" className="btn text-gray-800 bg-teal-400 hover:bg-teal-500">Log In</Link>
+                            <Link to="/register" className="btn text-gray-800 bg-teal-400 hover:bg-teal-500">Register</Link>
                         </>
                     }
 
