@@ -110,20 +110,19 @@ const Navbar = () => {
                 {/* Right side button */}
                 <div className="navbar-end">
                     {user ? <>
-
-
-
                         {/* Have User LogIn */}
                         <div className="dropdown dropdown-bottom dropdown-end">
-                            <div tabIndex={0} role="button" className=" m-1 border-2 border-teal-400 rounded-full"><img
+                            <div tabIndex={0} role="button" className=" m-1 border-2 border-teal-400 rounded-full">
+                                {/* User Avatar */}
+                                <img
                                 src={user?.photoURL || "https://i.ibb.co/61HT020/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDIz-LTAx-L3-Jt-Nj-A5-LXNvb-Glka-WNvbi13-LTAw-Mi1w-Ln-Bu.jpg"}
                                 alt="User Avatar"
                                 className="w-10 h-10 rounded-full bg-gray-200"
                             />
                             </div>
-                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-
-                                <li><a>Item 2</a></li>
+                            <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
+                                <li className='font-bold  py-2 text-center text-base'>{user.displayName}</li>
+                                <li><Link to="/dashboard">Dashboard</Link></li>
                                 <li><button
                                     onClick={handleLogOut}
                                     className="hover:bg-red-400 hover:font-bold"
