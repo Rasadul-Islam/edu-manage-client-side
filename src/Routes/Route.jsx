@@ -7,9 +7,14 @@ import AllClasses from "../pages/AllClasses/AllClasses";
 import TeachOnEdu from "../pages/TeachOnEdu/TeachOnEdu";
 import Register from "../pages/Register/Register";
 import LogIn from "../pages/LogIn/LogIn";
-import Dashboard from "../pages/Dashboard/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../utility/ErrorPage/ErrorPage";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
+import MyEnrollClass from "../pages/Dashboard/MyEnrollClass";
+import Dashboard from "../Layout/Dashboard";
+import TeacherRequest from "../pages/Dashboard/TeacherRequest";
+import Users from "../pages/Dashboard/Users";
+import Profile from "../pages/Dashboard/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -22,28 +27,28 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/allClasses",
+        path: "allClasses",
         element: <AllClasses></AllClasses>,
       },
       {
-        path: "/teachOnEdu",
+        path: "teachOnEdu",
         element:
           <PrivateRoute>
             <TeachOnEdu></TeachOnEdu>
           </PrivateRoute>,
       },
       {
-        path: "/logIn",
+        path: "logIn",
         element: <LogIn></LogIn>,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register></Register>,
       },
     ]
   },
   {
-    path: "/dashboard",
+    path: "dashboard",
     element:
       <PrivateRoute>
         <Dashboard></Dashboard>
@@ -53,9 +58,44 @@ export const router = createBrowserRouter([
         path:"/dashboard",
         element:
         <PrivateRoute>
-        <Dashboard></Dashboard>
+        <DashboardHome></DashboardHome>
       </PrivateRoute>
-      }
+      },
+      {
+        path:"myClass",
+        element:
+        <PrivateRoute>
+        <MyEnrollClass></MyEnrollClass>
+      </PrivateRoute>
+      },
+      {
+        path:"teacherRequest",
+        element:
+        <PrivateRoute>
+        <TeacherRequest></TeacherRequest>
+      </PrivateRoute>
+      },
+      {
+        path:"users",
+        element:
+        <PrivateRoute>
+        <Users></Users>
+      </PrivateRoute>
+      },
+      {
+        path:"allClasses",
+        element:
+        <PrivateRoute>
+        <AllClasses></AllClasses>
+      </PrivateRoute>
+      },
+      {
+        path:"profile",
+        element:
+        <PrivateRoute>
+        <Profile></Profile>
+      </PrivateRoute>
+      },
     ]
   }
 ]);
