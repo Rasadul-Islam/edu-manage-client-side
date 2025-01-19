@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import registerLottie from '../../assets/lottie/SignUp.json';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
@@ -9,6 +9,7 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate()
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -66,6 +67,7 @@ const Register = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
+                    navigate('/logIn');
                 }
             })
             // console.log("User created successfully:", result.user);
