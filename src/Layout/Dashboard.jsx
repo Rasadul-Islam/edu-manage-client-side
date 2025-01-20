@@ -2,11 +2,12 @@ import React from 'react';
 import { FaChalkboardTeacher, FaHome, FaHouseUser, FaUsers } from 'react-icons/fa';
 import { SiGoogleclassroom } from 'react-icons/si';
 import { NavLink, Outlet } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
 
     // Todo: admin comes from database 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
     return (
         <div className='flex w-full'>
             {/* Dashboard Side bar */}
