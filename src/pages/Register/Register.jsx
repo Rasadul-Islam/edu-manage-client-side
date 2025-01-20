@@ -18,6 +18,7 @@ const Register = () => {
         const email = form.email.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
+        const role = 'student';
 
         // Password validation
         const uppercaseCheck = /[A-Z]/.test(password);
@@ -53,23 +54,24 @@ const Register = () => {
             const result = await createUser(email, password);
             await updateUserProfile(name, photoURL);
 
-            const userInfo ={
+            const userInfo = {
                 name: name,
                 email: email,
+                role: role,
             }
-            axiosPublic.post('/users',userInfo)
-            .then(res=>{
-                if(res.data.insertedId){
-                    console.log('user added to the data base');
-                    Swal.fire({
-                        icon: "success",
-                        title: "Registration successful!",
-                        showConfirmButton: false,
-                        timer: 1500,
-                    });
-                    navigate('/logIn');
-                }
-            })
+            axiosPublic.post('/users', userInfo)
+                .then(res => {
+                    if (res.data.insertedId) {
+                        console.log('user added to the data base');
+                        Swal.fire({
+                            icon: "success",
+                            title: "Registration successful!",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        navigate('/logIn');
+                    }
+                })
             // console.log("User created successfully:", result.user);
         } catch (error) {
             console.error("Error creating user:", error);

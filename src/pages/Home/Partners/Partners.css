@@ -1,11 +1,11 @@
 .partner-track {
-  animation: scroll-left 60s linear infinite; 
+  animation: scroll-left 40s linear infinite; 
 }
 
 /* Keyframes for infinite scrolling */
 @keyframes scroll-left {
   0% {
-    transform: translateX(0);
+    transform: translateX(30%);
   }
   100% {
     transform: translateX(-100%);
