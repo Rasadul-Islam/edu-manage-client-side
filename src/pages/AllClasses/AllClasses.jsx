@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const AllClasses = () => {
+
+    useEffect()
     return (
         <div>
             <Helmet>

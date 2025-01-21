@@ -15,6 +15,7 @@ import Dashboard from "../Layout/Dashboard";
 import TeacherRequest from "../pages/Dashboard/TeacherRequest";
 import Users from "../pages/Dashboard/Users";
 import Profile from "../pages/Dashboard/Profile";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -53,48 +54,50 @@ export const router = createBrowserRouter([
       <PrivateRoute>
         <Dashboard></Dashboard>
       </PrivateRoute>,
-    children:[
+    children: [
       {
-        path:"/dashboard",
+        path: "/dashboard",
         element:
-        <PrivateRoute>
-        <DashboardHome></DashboardHome>
-      </PrivateRoute>
+          <PrivateRoute>
+            <DashboardHome></DashboardHome>
+          </PrivateRoute>
       },
       {
-        path:"myClass",
+        path: "myClass",
         element:
-        <PrivateRoute>
-        <MyEnrollClass></MyEnrollClass>
-      </PrivateRoute>
+          <PrivateRoute>
+            <MyEnrollClass></MyEnrollClass>
+          </PrivateRoute>
       },
       {
-        path:"teacherRequest",
+        path: "teacherRequest",
         element:
-        <PrivateRoute>
-        <TeacherRequest></TeacherRequest>
-      </PrivateRoute>
+          <AdminRoute>
+            <TeacherRequest></TeacherRequest>
+          </AdminRoute>
       },
       {
-        path:"users",
+        path: "users",
         element:
-        <PrivateRoute>
-        <Users></Users>
-      </PrivateRoute>
+          <AdminRoute>
+            <Users></Users>
+          </AdminRoute>
       },
       {
-        path:"allClasses",
+        path: "allClasses",
         element:
-        <PrivateRoute>
-        <AllClasses></AllClasses>
-      </PrivateRoute>
+          <AdminRoute>
+            <AllClasses></AllClasses>
+          </AdminRoute>
+
+
       },
       {
-        path:"profile",
+        path: "profile",
         element:
-        <PrivateRoute>
-        <Profile></Profile>
-      </PrivateRoute>
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
       },
     ]
   }
