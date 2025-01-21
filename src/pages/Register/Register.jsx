@@ -16,9 +16,11 @@ const Register = () => {
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
+        const phone = form.phone.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
         const role = 'student';
+
 
         // Password validation
         const uppercaseCheck = /[A-Z]/.test(password);
@@ -57,7 +59,10 @@ const Register = () => {
             const userInfo = {
                 name: name,
                 email: email,
+                phone: phone,
                 role: role,
+                photoURL: photoURL,
+
             }
             axiosPublic.post('/users', userInfo)
                 .then(res => {
@@ -98,6 +103,10 @@ const Register = () => {
                     <div className="form-control">
                         <label className="text-lg font-semibold mb-2">Email</label>
                         <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="text-lg font-semibold mb-2">Phone</label>
+                        <input type="number" name="phone" placeholder="Phone Number" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="text-lg font-semibold mb-2">Photo URL</label>

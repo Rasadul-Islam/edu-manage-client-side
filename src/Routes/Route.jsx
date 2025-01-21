@@ -16,6 +16,9 @@ import TeacherRequest from "../pages/Dashboard/TeacherRequest";
 import Users from "../pages/Dashboard/Users";
 import Profile from "../pages/Dashboard/Profile";
 import AdminRoute from "./AdminRoute";
+import AdminAllClasses from "../pages/Dashboard/AdminAllClasses";
+import AddClass from "../pages/Dashboard/AddClass";
+import MyClass from "../pages/Dashboard/MyClass";
 
 export const router = createBrowserRouter([
   {
@@ -54,19 +57,13 @@ export const router = createBrowserRouter([
       <PrivateRoute>
         <Dashboard></Dashboard>
       </PrivateRoute>,
+    errorElement: <h1>Not Fot any item here</h1>,
     children: [
       {
         path: "/dashboard",
         element:
           <PrivateRoute>
             <DashboardHome></DashboardHome>
-          </PrivateRoute>
-      },
-      {
-        path: "myClass",
-        element:
-          <PrivateRoute>
-            <MyEnrollClass></MyEnrollClass>
           </PrivateRoute>
       },
       {
@@ -84,13 +81,28 @@ export const router = createBrowserRouter([
           </AdminRoute>
       },
       {
-        path: "allClasses",
+        path: "adimAllClasses",
         element:
           <AdminRoute>
-            <AllClasses></AllClasses>
+            <AdminAllClasses></AdminAllClasses>
           </AdminRoute>
-
-
+      },
+      {
+        path: "addClass",
+        element:
+          <AddClass></AddClass>
+      },
+      {
+        path: "myClass",
+        element:
+          <MyClass></MyClass>
+      },
+      {
+        path: "myEnrollClass",
+        element:
+          <PrivateRoute>
+            <MyEnrollClass></MyEnrollClass>
+          </PrivateRoute>
       },
       {
         path: "profile",

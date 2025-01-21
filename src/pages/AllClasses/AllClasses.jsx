@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const AllClasses = () => {
 
-    useEffect()
+    // useEffect()
     return (
         <div>
             <Helmet>

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const Users = () => {
@@ -16,7 +16,7 @@ const Users = () => {
     const handleMakeAdmin = user =>{
         axiosSecure.patch(`/users/admin/${user._id}`)
         .then(res =>{
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data.modifiedCount > 0){
                 refetch();
                 Swal.fire({

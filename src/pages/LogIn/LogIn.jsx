@@ -13,6 +13,7 @@ const LogIn = () => {
     const from = location?.state || "/";
     const { logInUser, logInWithGoogle } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
+    const role = 'student';
 
     // Handle Google Sign-In
     const handleGoogleLogIn = () => {
@@ -22,6 +23,8 @@ const LogIn = () => {
             const userInfo={
                 name: result.user?.displayName,
                 email: result.user?.email,
+                photoURL: result.user?.photoURL,
+                role: role, 
             }
             axiosPublic.post('/users', userInfo)
             .then(res=>{

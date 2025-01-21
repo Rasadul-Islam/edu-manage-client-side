@@ -12,10 +12,13 @@ const Dashboard = () => {
         <div className='flex w-full'>
             {/* Dashboard Side bar */}
             <ul className='w-64 md:w-1/5 h-screen min-h-fit p-5 flex flex-col gap-2 menu menu-lg dropdown-content bg-teal-100  z-[1] shadow'>
+                {/* Home button */}
                 <li><NavLink to='/' className='flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize'>
                     <FaHome></FaHome>
                     <h1>Home</h1>
                 </NavLink></li>
+                {/* Admin use only */}
+                <div>
                 {
                     isAdmin ?
                         <>
@@ -30,7 +33,7 @@ const Dashboard = () => {
                                 <h1>Users</h1>
                             </NavLink></li>
                             {/* 3rd Navlink */}
-                            <li><NavLink to='/dashboard/allClasses' className='flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize'>
+                            <li><NavLink to='/dashboard/adimAllClasses' className='flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize'>
                                 <SiGoogleclassroom />
                                 <h1>All classes</h1>
                             </NavLink></li>
@@ -40,12 +43,25 @@ const Dashboard = () => {
 
                         </>
                 }
+                </div>
 
-
-                {/* All students NavLinks */}
+                {/* Teacher use only */}
+                <li><NavLink to='/dashboard/addClass' className='flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize'>
+                    <SiGoogleclassroom />
+                    Add Class</NavLink>
+                </li>
                 <li><NavLink to='/dashboard/myClass' className='flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize'>
                     <SiGoogleclassroom />
-                    My enroll class</NavLink></li>
+                    My Class</NavLink>
+                </li>
+
+                {/* All Student use */}
+                <li><NavLink to='/dashboard/myEnrollClass' className='flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize'>
+                    <SiGoogleclassroom />
+                    My enroll class</NavLink>
+                </li>
+
+                {/* All User see Profile  */}
                 <li><NavLink to='/dashboard/profile' className='flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize'>
                     <FaHouseUser></FaHouseUser>
                     Profile</NavLink></li>
