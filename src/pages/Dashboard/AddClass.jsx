@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth"; // Custom hook to get user info
+import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../utility/LoadingSpinner/LoadingSpinner";
