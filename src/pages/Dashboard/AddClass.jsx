@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth"; // Custom hook to get user info
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../utility/LoadingSpinner/LoadingSpinner";
 
 const ClassPage = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true); 
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -15,6 +18,18 @@ const ClassPage = () => {
         description: "",
         image: "",
     });
+
+    useEffect(() => {
+        axiosSecure.get(`/users/${user.email}`)
+            .then(res => {
+                setCurrentUser(res.data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error("Error fetching user data:", error);
+                setLoading(false); 
+            });
+    }, [user.email, axiosSecure]);
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -28,9 +43,9 @@ const ClassPage = () => {
 
         const classData = {
             ...formData,
-            name: user?.displayName,
-            email: user?.email,
-            status: "pending", 
+            name: currentUser?.name || "",
+            email: currentUser?.email || "",
+            status: "pending",
         };
 
         try {
@@ -53,6 +68,10 @@ const ClassPage = () => {
             });
         }
     };
+
+    if (loading) {
+        return <LoadingSpinner></LoadingSpinner>;
+    }
 
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
@@ -77,7 +96,7 @@ const ClassPage = () => {
                     <label className="block text-lg font-medium mb-2">Name</label>
                     <input
                         type="text"
-                        value={user?.displayName}
+                        value={currentUser?.name || ""}
                         className="w-full p-3 border rounded-md bg-gray-100"
                         readOnly
                     />
@@ -88,7 +107,7 @@ const ClassPage = () => {
                     <label className="block text-lg font-medium mb-2">Email</label>
                     <input
                         type="email"
-                        value={user?.email}
+                        value={currentUser?.email || ""}
                         className="w-full p-3 border rounded-md bg-gray-100"
                         readOnly
                     />
