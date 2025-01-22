@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth"; // Custom hook to get current user info
 import Swal from "sweetalert2";
+import { FaEdit } from "react-icons/fa";
 
 const Profile = () => {
     const axiosSecure = useAxiosSecure();
@@ -121,8 +122,8 @@ const Profile = () => {
                             <p>
                                 <strong>Email:</strong> {currentUser.email}
                             </p>
-                            <p>
-                                <strong>Phone:</strong> {currentUser.phone}
+                            <p className="flex items-center gap-2">
+                                <strong>Phone:</strong> {currentUser.phone || <FaEdit  onClick={() => setIsEditing(true)} className="cursor-pointer text-gray-500"/>}
                             </p>
                             <p>
                                 <strong>Role:</strong> {currentUser.role}

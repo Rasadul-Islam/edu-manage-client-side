@@ -3,9 +3,21 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FiLogOut } from 'react-icons/fi';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const Navbar = () => {
     const { user, logOutUser } = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
+    // Fetch current user data
+    const { data: currentUser = {} } = useQuery({
+        queryKey: ["currentUser", user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/users/${user.email}`);
+            return res.data;
+        },
+        enabled: !!user?.email, // Ensure the query runs only if the user is logged in
+    });
 
     const navOptions = <>
         <li><Link to='/' className='hover:font-bold hover:text-teal-500'>Home</Link ></li>
@@ -98,14 +110,14 @@ const Navbar = () => {
                             <div tabIndex={0} role="button" className=" m-1 border-2 border-teal-400 rounded-full">
                                 {/* User Avatar */}
                                 <img
-                                src={user?.photoURL || "https://i.ibb.co/61HT020/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDIz-LTAx-L3-Jt-Nj-A5-LXNvb-Glka-WNvbi13-LTAw-Mi1w-Ln-Bu.jpg"}
-                                alt="User Avatar"
-                                className="w-10 h-10 rounded-full bg-gray-200"
-                            />
+                                    src={currentUser?.photoURL || "https://i.ibb.co/61HT020/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDIz-LTAx-L3-Jt-Nj-A5-LXNvb-Glka-WNvbi13-LTAw-Mi1w-Ln-Bu.jpg"}
+                                    alt="User Avatar"
+                                    className="w-10 h-10 rounded-full bg-gray-200"
+                                />
                             </div>
                             {/* Dropdown button */}
                             <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
-                                <li className='font-bold  py-2 text-center text-base'>{user.displayName}</li>
+                                <li className='font-bold  py-2 text-center text-base'>{currentUser.name || 'User'}</li>
                                 <li><Link to="/dashboard">Dashboard</Link></li>
                                 <li><button
                                     onClick={handleLogOut}
