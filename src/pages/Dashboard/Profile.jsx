@@ -114,7 +114,7 @@ const Profile = () => {
                     <>
                         <div className="flex flex-col gap-4">
                             <p className="flex justify-center items-center ">
-                                <img src={currentUser.photoURL} alt={currentUser.name} className="w-32 h-32 rounded-full border-2 border-teal-200 shadow-lg shadow-teal-200" />
+                                <img src={currentUser.photoURL || 'https://i.ibb.co.com/61HT020/c-HJpdm-F0-ZS9sci9pb-WFn-ZXMvd2-Vic2l0-ZS8y-MDIz-LTAx-L3-Jt-Nj-A5-LXNvb-Glka-WNvbi13-LTAw-Mi1w-Ln-Bu.jpg'} alt={currentUser.name} className="w-32 h-32 rounded-full border-2 border-teal-200 shadow-lg shadow-teal-200" />
                             </p>
                             <p>
                                 <strong>Name:</strong> {currentUser.name}

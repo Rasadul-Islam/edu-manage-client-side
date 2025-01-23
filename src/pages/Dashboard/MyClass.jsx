@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth"; // Custom hook for auth
+import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
@@ -25,7 +25,7 @@ const MyClasses = () => {
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: "You won't keep this class!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#d33",
@@ -95,7 +95,7 @@ const MyClasses = () => {
                             {/* See Details Button */}
                             <button
                                 onClick={() => handleSeeDetails(cls._id)}
-                                disabled={cls.status !== "approved"} // Disabled if not approved
+                                disabled={cls.status !== "approved"}
                                 className={`${
                                     cls.status === "approved"
                                         ? "bg-teal-500 hover:bg-teal-600"
