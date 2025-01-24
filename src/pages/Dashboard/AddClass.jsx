@@ -46,6 +46,7 @@ const ClassPage = () => {
             name: currentUser?.name || "",
             email: currentUser?.email || "",
             status: "pending",
+            enrollmentCount: 0 ,
         };
 
         try {
