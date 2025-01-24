@@ -20,6 +20,7 @@ import AdminAllClasses from "../pages/Dashboard/AdminAllClasses";
 import AddClass from "../pages/Dashboard/AddClass";
 import MyClass from "../pages/Dashboard/MyClass";
 import UpdateClass from "../pages/Dashboard/UpdateClass";
+import SeeClassDitails from "../pages/Dashboard/SeeClassDitails";
 
 export const router = createBrowserRouter([
   {
@@ -117,6 +118,13 @@ export const router = createBrowserRouter([
         element:
           <PrivateRoute>
             <UpdateClass></UpdateClass>
+          </PrivateRoute>
+      },
+      {
+        path: "my-class/:id",
+        element:
+          <PrivateRoute>
+            <SeeClassDitails></SeeClassDitails>
           </PrivateRoute>
       },
     ]
