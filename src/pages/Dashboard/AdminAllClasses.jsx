@@ -34,6 +34,31 @@ const AdminAllClasses = () => {
             })
     };
 
+    // Reject Class Handler
+    const handleReject = (id) => {Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to reverse this action!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, reject it!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axiosSecure.patch(`/classes/reject/${id}`)
+                    .then(res => {
+                    if (res.data.modifiedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            title: "Rejected!",
+                            text: `Class has been rejected!`,
+                            icon: "success"
+                        });
+                    }});
+                }
+                
+            });
+    };
 
     return (
         <div className="my-10 px-5">
