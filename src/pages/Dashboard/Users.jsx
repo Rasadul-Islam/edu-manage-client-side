@@ -69,6 +69,7 @@ const Users = () => {
                     <thead>
                         <tr>
                             <th></th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -79,6 +80,8 @@ const Users = () => {
                         {
                             users.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
+                                <th><img src={user.photoURL} alt={user.name}
+                                className="w-12 h-12" /></th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>

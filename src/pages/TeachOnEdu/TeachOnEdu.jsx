@@ -107,6 +107,16 @@ const TeachOnEdu = () => {
                         readOnly
                     />
                 </div>
+                {/* Image */}
+                <div>
+                    <label className="block text-lg font-medium mb-2">Image</label>
+                    <input
+                        type="email"
+                        value={currentUser?.photoURL || ""}
+                        className="w-full p-3 border rounded-md bg-gray-100"
+                        readOnly
+                    />
+                </div>
 
                 {/* Experience */}
                 <div>
