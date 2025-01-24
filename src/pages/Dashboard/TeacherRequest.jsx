@@ -101,7 +101,7 @@ const TeacherRequest = () => {
                                 <td className="border px-4 py-2">{request.title}</td>
                                 <td className="border px-4 py-2">{request.category}</td>
                                 <td className="border px-4 py-2">{request.status}</td>
-                                <td className="border px-4 py-2 flex gap-2">
+                                <td className="border flex-col px-4 py-2 md:flex gap-2">
                                     <button
                                         className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 disabled:bg-gray-400"
                                         onClick={() => handleApprove(request)}
