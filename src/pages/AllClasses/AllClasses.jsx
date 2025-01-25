@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 const AllClasses = () => {
     const axiosPublic = useAxiosPublic();
+    const navigate= useNavigate();
 
 
     const { data: classes = [], isLoading, refetch } = useQuery({
@@ -15,6 +17,9 @@ const AllClasses = () => {
         },
 
     });
+    const handleEnroll=((id)=>{
+        navigate(`/allClasses/enroll-class/${id}`);
+    })
 
 
     return (
@@ -32,14 +37,23 @@ const AllClasses = () => {
                                     alt={classItem.title}
                                     className="w-full h-40 object-cover rounded-md mb-4"
                                 />
-                                <h2 className="text-xl font-semibold mb-2">{classItem.title}</h2>
-                                <p className="text-gray-600 mb-2">{classItem.description}</p>
-                                <p className="font-bold text-lg mb-2">
-                                    Price: ${classItem.price}
+                                <h2 className="text-xl font-semibold mb-1">{classItem.title}</h2>
+                                <p className="text-gray-600 mb-1">
+                                    <span className="font-semibold">Posted By:</span> {classItem.name}
                                 </p>
-                                <p className="text-sm text-gray-500">
+                                <p className="font-bold text-lg mb-1">Price: ${classItem.price}</p>
+                                <p className="text-gray-600 mb-2">
+                                    {classItem.description.slice(0, 60)}...
+                                </p>
+                                <p className="text-sm text-gray-500 mb-3">
                                     Enrolled: {classItem.enrollmentCount} students
                                 </p>
+                                <button
+                                    className="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 w-full"
+                                    onClick={() => handleEnroll(classItem._id)}
+                                >
+                                    Enroll
+                                </button>
                             </div>
                         </div>
                     ))

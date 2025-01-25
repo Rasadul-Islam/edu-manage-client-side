@@ -21,6 +21,7 @@ import AddClass from "../pages/Dashboard/AddClass";
 import MyClass from "../pages/Dashboard/MyClass";
 import UpdateClass from "../pages/Dashboard/UpdateClass";
 import SeeClassDitails from "../pages/Dashboard/SeeClassDitails";
+import EnrollClass from "../pages/AllClasses/EnrollClass";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,13 @@ export const router = createBrowserRouter([
       {
         path: "allClasses",
         element: <AllClasses></AllClasses>,
+      },
+      {
+        path: "allClasses/enroll-class/:id",
+        element: 
+        <PrivateRoute>
+          <EnrollClass></EnrollClass>
+        </PrivateRoute> ,
       },
       {
         path: "teachOnEdu",
