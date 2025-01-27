@@ -21,7 +21,9 @@ import AddClass from "../pages/Dashboard/AddClass";
 import MyClass from "../pages/Dashboard/MyClass";
 import UpdateClass from "../pages/Dashboard/UpdateClass";
 import SeeClassDitails from "../pages/Dashboard/SeeClassDitails";
-import EnrollClass from "../pages/AllClasses/EnrollClass";
+import EnrollClass from "../pages/Dashboard/EnrollClass";
+import Payment from "../pages/AllClasses/Payment";
+import EnrollClassDetails from "../pages/Dashboard/EnrollClassDetails";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +44,13 @@ export const router = createBrowserRouter([
         element: 
         <PrivateRoute>
           <EnrollClass></EnrollClass>
+        </PrivateRoute> ,
+      },
+      {
+        path: "enroll-class/payment",
+        element: 
+        <PrivateRoute>
+         <Payment></Payment>
         </PrivateRoute> ,
       },
       {
@@ -133,6 +142,13 @@ export const router = createBrowserRouter([
         element:
           <PrivateRoute>
             <SeeClassDitails></SeeClassDitails>
+          </PrivateRoute>
+      },
+      {
+        path: "myEnrollClass/:id",
+        element:
+          <PrivateRoute>
+            <EnrollClassDetails></EnrollClassDetails>
           </PrivateRoute>
       },
     ]
