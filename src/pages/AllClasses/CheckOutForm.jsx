@@ -19,7 +19,7 @@ const CheckOutForm = ({classDetails }) => {
     useEffect(() => {
         axiosSecure.post('/create-payment-intent', { price })
             .then(res => {
-                console.log(res.data.clientSecret);
+                // console.log(res.data.clientSecret);
                 setClientSecret(res.data.clientSecret);
             })
 
@@ -79,13 +79,14 @@ const CheckOutForm = ({classDetails }) => {
                 }
                 const res = await axiosSecure.post('/payments', payment)
                 // console.log("payment save", res.data.insertedId);
-                if(res.data.insertedId){
+                if (res.data.insertedId) {
+                    await axiosSecure.patch(`/update-enrollment/${_id}`);
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
                         title: "Your payment has been completed",
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 1500,
                     });
                 }
             }
