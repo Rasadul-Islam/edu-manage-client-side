@@ -32,7 +32,8 @@ const MyEnrollClass = () => {
                         />
                         <h2 className="text-lg font-bold mt-4">{cls.title}</h2>
                         <p className="text-gray-600">Posted by: {cls.classCreator}</p>
-                        <Link to={`/dashboard/myEnrollClass/${cls.classId}`}
+                        <Link
+                            to={`/dashboard/myEnrollClass/${cls.classId}`} state={{classTitle: cls.title, instractor:cls.classCreator} }
                         >
                             <button
                                 className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">

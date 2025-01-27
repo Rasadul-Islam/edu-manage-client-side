@@ -3,24 +3,29 @@ import { IoAddCircleOutline } from 'react-icons/io5';
 import { useLocation, useParams } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const EnrollClassDetails = () => {
-    const axiosSecure =useAxiosSecure();
-    const [assignments, setAssignments]=useState([]);
+    const axiosSecure = useAxiosSecure();
+    const [assignments, setAssignments] = useState([]);
     const [feedback, setFeedback] = useState('');
     const [rating, setRating] = useState(0);
     const [showTERModal, setShowTERModal] = useState(false);
-    const {id} = useParams();
-    // console.log("classId",id);
+    const location = useLocation();
+    const { classTitle, instractor} = location.state || {};
+    const { id } = useParams();
+    const { user } = useAuth();
+    // console.log("classTitle",classTitle, "-Location", location );
 
-    useEffect(()=>{
+    useEffect(() => {
         axiosSecure.get(`/assignments/${id}`)
-        .then(res=>{
-            // console.log(res.data);
-            setAssignments(res.data);
-        })
+            .then(res => {
+                // console.log(res.data);
+                setAssignments(res.data);
+            })
 
-    },[id])
+    }, [id])
 
 
 
@@ -31,17 +36,47 @@ const EnrollClassDetails = () => {
         // Close the modal after submission
         setShowTERModal(false);
 
-        // Reset feedback and rating
-        setFeedback('');
-        setRating(0);
-
-        // Optionally, send this data to the server
-        // Example:
-        // axios.post('/api/feedback', { rating, feedback, classId: id })
-        //     .then(response => console.log('Feedback submitted:', response.data))
-        //     .catch(error => console.error('Error submitting feedback:', error));
+        const feedbackData = {
+            classId: id,
+            classTitle: classTitle,
+            feedback,
+            rating,
+            submittedDate: new Date(),
+            name: user.displayName,
+            image: user.photoURL,
+        };
+        axiosSecure.post('/feedback', feedbackData)
+            .then(res => {
+                console.log(res.data);
+                Swal.fire('Success', 'Feedback submitted successfully!', 'success');
+                // Reset feedback and rating
+                setFeedback('');
+                setRating(0);
+            })
+            .catch((error) => {
+                console.error('Error submitting feedback:', error);
+                Swal.fire('Error', 'Failed to submit feedback. Please try again.', 'error');
+            });
     };
-
+    const handleAssignmentSubmit = (assignmentId, assignmentTitle) => {
+        axiosSecure
+            .post(`/assignment/submit`, {
+                assignmentId,
+                classId: id,
+                assignmentTitle: assignmentTitle,
+                submitedDate: new Date(),
+            })
+            .then(() => {
+                // Fetch updated assignments to reflect the incremented count
+                axiosSecure.get(`/assignments/${id}`).then((res) => {
+                    setAssignments(res.data);
+                    Swal.fire("Success", "Assignment created successfully!", "success");
+                });
+            })
+            .catch((err) => {
+                console.error('Error submitting assignment:', err);
+            });
+    };
 
 
 
@@ -49,7 +84,9 @@ const EnrollClassDetails = () => {
 
     return (
         <div className="p-4">
-            <div className='mb-10 pb-5 border-b-2'>
+            <h1 className='text-center text-3xl font-bold capitalize'>{classTitle}</h1>
+            <div className=' flex justify-between items-center mb-10 pb-5 border-b-2'>
+                <h1 className='capitalize'>Instractor : {instractor}</h1>
                 {/* TER (Teaching Evaluation Report) Button */}
                 <button
                     onClick={() => setShowTERModal(true)}
@@ -61,7 +98,7 @@ const EnrollClassDetails = () => {
             </div>
 
             {/* Table displaying assignments */}
-            <h3 className="text-xl font-semibold mb-4">Assignments: {assignments.length}</h3>
+            <h3 className="text-xl font-semibold mb-4">Assignments Pulish : {assignments.length} </h3>
             <table className="min-w-full border-collapse mb-6 table-zebra">
                 <thead>
                     <tr className="bg-gray-200">
@@ -73,28 +110,30 @@ const EnrollClassDetails = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {assignments.length > 0 ? (
-            assignments.map((assignment, index) => (
-                <tr key={assignment._id}>
-                    <td className="py-2 px-4 border-b">{index + 1}</td>
-                    <td className="py-2 px-4 border-b">{assignment.title}</td>
-                    <td className="py-2 px-4 border-b">{assignment.description}</td>
-                    <td className="py-2 px-4 border-b">{new Date(assignment.deadline).toLocaleDateString()}</td>
-                    <td className="py-2 px-4 border-b">
-                        <button className="bg-blue-500 text-white px-3 py-2 rounded">Submit</button>
-                    </td>
-                </tr>
-            ))
-        ) : (
-            <tr>
-                <td colSpan="5" className="text-center py-4 text-gray-600">
-                    No assignment published
-                </td>
-            </tr>
-        )}
+                    {assignments.length > 0 ? (
+                        assignments.map((assignment, index) => (
+                            <tr key={assignment._id}>
+                                <td className="py-2 px-4 border-b">{index + 1}</td>
+                                <td className="py-2 px-4 border-b">{assignment.title}</td>
+                                <td className="py-2 px-4 border-b">{assignment.description}</td>
+                                <td className="py-2 px-4 border-b">{new Date(assignment.deadline).toLocaleDateString()}</td>
+                                <td className="py-2 px-4 border-b">
+                                    <button
+                                        onClick={() => handleAssignmentSubmit(assignment._id, assignment.title)}
+                                        className="bg-blue-500 text-white px-3 py-2 rounded">Submit</button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="5" className="text-center py-4 text-gray-600">
+                                No assignment published
+                            </td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
-            
+
 
             {/* TER Modal */}
             {showTERModal && (
