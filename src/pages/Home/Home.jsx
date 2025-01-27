@@ -7,6 +7,7 @@ import FeedBack from './FeedBack';
 import EduLoopOverView from './EduLoopOverView';
 import BecomeATeacher from './BecomeATeacher';
 import CareerPaths from './CareerPaths';
+import UpCommingClassEvent from './UpCommingClassEvent';
 
 const Home = () => {
     return (
@@ -22,6 +23,7 @@ const Home = () => {
             <FeedBack></FeedBack>
             <EduLoopOverView></EduLoopOverView>
             <BecomeATeacher></BecomeATeacher>
+            <UpCommingClassEvent></UpCommingClassEvent>
             <CareerPaths></CareerPaths>
         </div>
     );

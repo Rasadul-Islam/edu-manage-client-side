@@ -24,6 +24,7 @@ import SeeClassDitails from "../pages/Dashboard/SeeClassDitails";
 import EnrollClass from "../pages/Dashboard/EnrollClass";
 import Payment from "../pages/AllClasses/Payment";
 import EnrollClassDetails from "../pages/Dashboard/EnrollClassDetails";
+import UpcomingFeture from "../pages/Dashboard/UpcomingFeture";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "/class/:id",
+        element: <UpcomingFeture></UpcomingFeture>,
       },
     ]
   },
