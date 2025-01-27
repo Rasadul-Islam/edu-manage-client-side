@@ -4,6 +4,8 @@ import Partners from './Partners/Partners';
 import { Helmet } from 'react-helmet-async';
 import PopulerClasses from './PopulerClasses';
 import FeedBack from './FeedBack';
+import EduLoopOverView from './EduLoopOverView';
+import BecomeATeacher from './BecomeATeacher';
 
 const Home = () => {
     return (
@@ -17,6 +19,8 @@ const Home = () => {
             <Partners></Partners>
             <PopulerClasses></PopulerClasses>
             <FeedBack></FeedBack>
+            <EduLoopOverView></EduLoopOverView>
+            <BecomeATeacher></BecomeATeacher>
         </div>
     );
 };

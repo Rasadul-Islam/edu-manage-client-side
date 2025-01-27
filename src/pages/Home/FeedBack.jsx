@@ -39,7 +39,7 @@ const FeedBack = () => {
                             <div className="p-6 border rounded-lg shadow-lg shadow-teal-300 bg-white flex flex-col justify-center items-center">
                                 <div className="flex flex-col justify-center items-center gap-4 mb-4">
                                     <img
-                                        src={feedback.image || 'https://via.placeholder.com/150'}
+                                        src={feedback.image}
                                         alt={feedback.name}
                                         className="w-16 h-16 rounded-full"
                                     />
