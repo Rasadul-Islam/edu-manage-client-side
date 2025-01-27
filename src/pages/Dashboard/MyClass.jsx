@@ -58,7 +58,7 @@ const MyClasses = () => {
             <h2 className="text-3xl font-semibold mb-6 text-center">My Classes</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {classes.map((cls) => (
-                    <div key={cls._id} className="bg-white p-4 shadow-md rounded-md">
+                    <div key={cls._id} className="bg-white flex flex-col justify-between p-4 shadow-md rounded-md">
                         <img src={cls.image} alt={cls.title} className="w-full h-40 object-cover rounded-md mb-4" />
                         <h3 className="text-xl font-bold mb-2">{cls.title}</h3>
                         <p><strong>Name:</strong> {cls.name}</p>

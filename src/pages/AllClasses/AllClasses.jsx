@@ -28,7 +28,7 @@ const AllClasses = () => {
                 <title> EduLoop | All Classes</title>
             </Helmet>
             <h1 className='text-center font-bold text-2xl md:text-4xl my-5'>All Classes</h1>
-            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 
                 {classes.length > 0 ? (
                     classes.map((classItem) => (
@@ -60,7 +60,7 @@ const AllClasses = () => {
                         </div>
                     ))
                 ) : (
-                    <div className="text-center text-gray-500">
+                    <div className="col-span-2 md:col-span-3 text-center text-gray-500">
                         No classes available at the moment.
                     </div>
                 )}

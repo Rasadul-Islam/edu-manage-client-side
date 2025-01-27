@@ -55,7 +55,7 @@ const PopulerClasses = () => {
         >
           {populerClass.map((classItem) => (
             <SwiperSlide key={classItem._id}>
-              <div className="p-5 shadow-lg rounded-md bg-white bg-opacity-80 h-96 ">
+              <div className="flex flex-col justify-between p-5 shadow-lg rounded-md bg-white bg-opacity-80 h-[450px] ">
                 <img
                   src={classItem.image}
                   alt={classItem.title}
