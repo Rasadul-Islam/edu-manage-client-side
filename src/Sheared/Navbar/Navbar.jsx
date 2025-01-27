@@ -98,7 +98,7 @@ const Navbar = () => {
                 </div>
                 {/* Logo */}
                 <div className="navbar-center hidden md:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 text-lg">
                         {navOptions}
                     </ul>
                 </div>
@@ -116,7 +116,7 @@ const Navbar = () => {
                                 />
                             </div>
                             {/* Dropdown button */}
-                            <ul tabIndex={0} className="dropdown-content menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
+                            <ul tabIndex={0} className="dropdown-content  menu bg-base-200 rounded-box z-[1] w-52 p-2 shadow">
                                 <li className='font-bold  py-2 text-center text-base'>{currentUser.name || 'User'}</li>
                                 <li><Link to="/dashboard">Dashboard</Link></li>
                                 <li><button

@@ -23,11 +23,13 @@ const AllClasses = () => {
 
 
     return (
-        <div>
+        <div className='px-5'>
             <Helmet>
                 <title> EduLoop | All Classes</title>
             </Helmet>
+            <h1 className='text-center font-bold text-2xl md:text-4xl my-5'>All Classes</h1>
             <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                
                 {classes.length > 0 ? (
                     classes.map((classItem) => (
                         <div key={classItem._id}>

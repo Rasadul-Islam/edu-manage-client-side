@@ -48,7 +48,7 @@ const Partners = () => {
   ];
 
   return (
-    <div className="partner-carousel w-3/5 mx-auto my-5 relative overflow-hidden">
+    <div className="partner-carousel w-3/5 mx-auto my-10 mb-20 relative overflow-hidden">
       <h2 className="text-3xl font-bold text-center text-teal-500 mb-5">
         Our Partners
       </h2>

@@ -20,7 +20,7 @@ const FeedBack = () => {
 
 
     return (
-        <div className="p-6 max-w-3xl mx-auto">
+        <div className="p-6 max-w-4xl mx-auto">
             <h2 className="text-2xl font-semibold text-center mb-6">Teacher Feedback</h2>
 
             {feedbacks.length > 0 ? (

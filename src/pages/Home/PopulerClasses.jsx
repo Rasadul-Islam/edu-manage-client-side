@@ -21,10 +21,25 @@ const PopulerClasses = () => {
       });
   }, []);
 
+  const handleSlideChange = (swiper) => {
+    // Get the current slide index and adjust the background position accordingly
+    const currentIndex = swiper.activeIndex;
+    const backgroundPosition = -(currentIndex * 50); // Adjust '50' to control the movement speed
+    document.querySelector('.swiper-container').style.backgroundPosition = `${backgroundPosition}px center`;
+  };
+
   return (
-    <div className="my-10 bg-teal-50 px-5 py-10">
-      <h1 className="text-2xl md:text-4xl font-bold text-center my-5">Popular 6 Classes</h1>
-      <div>
+      
+      <div
+        className="relative bg-fixed bg-cover bg-center mb-10 py-10 text-black px-10"
+        style={{
+          backgroundImage: 'url("https://i.ibb.co.com/2q9sXJm/class-5976481-1280.jpg")',
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <h1 className="text-2xl p-4 rounded-xl md:text-4xl font-bold text-center mb-5 bg-white bg-opacity-100 w-fit mx-auto">Popular Classes</h1>
         <Swiper
           modules={[Navigation, Pagination]}
           navigation
@@ -36,10 +51,11 @@ const PopulerClasses = () => {
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
+          onSlideChange={handleSlideChange} // Trigger parallax effect on slide change
         >
           {populerClass.map((classItem) => (
             <SwiperSlide key={classItem._id}>
-              <div className="p-5 shadow-lg rounded-md bg-white">
+              <div className="p-5 shadow-lg rounded-md bg-white bg-opacity-80 h-96 ">
                 <img
                   src={classItem.image}
                   alt={classItem.title}
@@ -56,7 +72,6 @@ const PopulerClasses = () => {
           ))}
         </Swiper>
       </div>
-    </div>
   );
 };
 
