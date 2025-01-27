@@ -6,6 +6,7 @@ import PopulerClasses from './PopulerClasses';
 import FeedBack from './FeedBack';
 import EduLoopOverView from './EduLoopOverView';
 import BecomeATeacher from './BecomeATeacher';
+import CareerPaths from './CareerPaths';
 
 const Home = () => {
     return (
@@ -21,6 +22,7 @@ const Home = () => {
             <FeedBack></FeedBack>
             <EduLoopOverView></EduLoopOverView>
             <BecomeATeacher></BecomeATeacher>
+            <CareerPaths></CareerPaths>
         </div>
     );
 };
