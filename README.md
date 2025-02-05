@@ -80,3 +80,5 @@ EduLoop is a comprehensive platform designed to streamline educational managemen
 ### Prerequisites
 - Node.js and npm installed.
 
+### [Server side repository](https://github.com/Rasadul-Islam/edu-manage-server-side)
+
