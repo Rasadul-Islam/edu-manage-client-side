@@ -107,8 +107,8 @@ const TeachOnEdu = () => {
 
     if (currentUser?.role === "teacher") {
         return (
-            <div className="text-center">
-                <h2 className="text-2xl font-semibold text-green-600 mb-4">
+            <div className="text-center flex flex-col items-center justify-center max-w-4xl rounded-lg shadow-lg shadow-teal-300 mx-auto h-60 bg-teal-100 border-2 border-teal-200 my-10 ">
+                <h2 className="text-2xl font-semibold text-green-500 mb-4">
                     You are already a teacher!
                 </h2>
                 <p className="text-gray-600">Thank you for being part of our teaching community.</p>

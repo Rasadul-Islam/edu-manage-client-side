@@ -16,7 +16,7 @@ const Navbar = () => {
             const res = await axiosSecure.get(`/users/${user.email}`);
             return res.data;
         },
-        enabled: !!user?.email, // Ensure the query runs only if the user is logged in
+        enabled: !!user?.email,
     });
 
     const navOptions = <>
@@ -24,6 +24,7 @@ const Navbar = () => {
         <li><Link to='/allClasses' className='hover:font-bold hover:text-teal-500'>All Classes</Link ></li>
         <li><Link to='/teachOnEdu' className='hover:font-bold hover:text-teal-500'>Teach on EduLoop</Link ></li>
         <li><Link to='/blogs' className='hover:font-bold hover:text-teal-500'>Blogs</Link ></li>
+        <li><Link to='/aboutUs' className='hover:font-bold hover:text-teal-500'>About Us</Link ></li>
 
     </>
     // User LogOut function
