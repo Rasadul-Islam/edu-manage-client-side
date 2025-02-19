@@ -43,7 +43,7 @@ const PopulerClasses = () => {
         backgroundPosition: 'center',
       }}
     >
-      <h1 className="text-2xl p-4 rounded-lg md:text-4xl font-bold text-center mb-5 bg-white bg-opacity-100 w-fit mx-auto">Popular Classes</h1>
+      <h1 className="text-2xl p-4 rounded-lg md:text-4xl font-bold text-center mb-5 bg-white bg-opacity-100 w-fit mx-auto text-teal-500">Popular Classes</h1>
       <Swiper
         modules={[Navigation, Pagination]}
         navigation

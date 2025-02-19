@@ -21,7 +21,7 @@ const FeedBack = () => {
 
     return (
         <div className="p-6 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-semibold text-center mb-6">Teacher Feedback</h2>
+            <h2 className="text-3xl text-teal-500 font-semibold text-center mb-6">Teacher Feedback</h2>
 
             {feedbacks.length > 0 ? (
                 <Swiper

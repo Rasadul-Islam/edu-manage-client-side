@@ -16,14 +16,14 @@ const BecomeATeacher = () => {
       }}
     >
       <div className="bg-black bg-opacity-50 p-10 rounded-lg max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">Inspire the Next Generation</h2>
+        <h2 className="text-4xl text-teal-100 font-bold mb-6">Inspire the Next Generation</h2>
         <p className="text-lg mb-8">
           Are you passionate about teaching? Join us to transform education and
           empower learners worldwide. Flexible schedules, limitless impact, and
           tools to thrive await you.
         </p>
         <Link to='/teachOnEdu'>
-        <button className="px-6 py-3 bg-teal-200 text-black font-bold rounded-lg shadow-md hover:bg-yellow-500 transition">
+        <button className="px-6 py-3 bg-teal-300 text-black font-bold rounded-lg shadow-md hover:bg-yellow-500 transition">
           Become a Teacher
         </button>
         </Link>

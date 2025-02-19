@@ -37,7 +37,7 @@ const BlogsSection = () => {
   return (
     <section className="py-12 px-6 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-6">📚 Blogs & Resources</h2>
+        <h2 className="text-3xl font-bold text-teal-500 text-center mb-6">📚 Blogs & Resources</h2>
 
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
           {blogs.map((blog) => (
@@ -56,7 +56,7 @@ const BlogsSection = () => {
                 {blog.fullDescription}
               </p>
               <button
-                className="mt-4 text-blue-600 font-semibold"
+                className="mt-4 text-teal-500 font-semibold"
                 onClick={() => setSelectedBlog(blog)}
               >
                 Read More →
