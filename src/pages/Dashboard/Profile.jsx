@@ -49,7 +49,7 @@ const Profile = () => {
 
     return (
         <div className="">
-            <h2 className="text-4xl text-center">Profile</h2>
+            <h2 className="text-4xl text-center text-teal-500 mt-20">Profile</h2>
             <div className="w-3/5 mx-auto rounded-lg p-5 border-2 border-teal-200 shadow-xl shadow-teal-200 text-xl mt-5">
                 {isEditing ? (
                     <>

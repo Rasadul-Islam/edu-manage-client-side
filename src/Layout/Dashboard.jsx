@@ -4,6 +4,7 @@ import { SiGoogleclassroom } from 'react-icons/si';
 import { NavLink, Outlet } from 'react-router-dom';
 import useRole from '../hooks/useRole';
 import LoadingSpinner from '../utility/LoadingSpinner/LoadingSpinner';
+import { GrOverview } from 'react-icons/gr';
 
 const Dashboard = () => {
  const [role, isRoleLoading]=useRole()
@@ -100,6 +101,15 @@ const Dashboard = () => {
         {/* Profile: Common for all users */}
         <li>
           <NavLink
+            to="/dashboard/overView"
+            className="flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize"
+          >
+            <GrOverview />
+            <h1>Overview</h1>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/dashboard/profile"
             className="flex gap-2 items-center hover:text-gray-900 text-gray-500 py-3 capitalize"
           >
@@ -107,6 +117,7 @@ const Dashboard = () => {
             <h1>Profile</h1>
           </NavLink>
         </li>
+        
       </ul>
 
       {/* Content */}

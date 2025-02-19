@@ -27,6 +27,7 @@ import EnrollClassDetails from "../pages/Dashboard/EnrollClassDetails";
 import UpcomingFeture from "../pages/Dashboard/UpcomingFeture";
 import BlogsSection from "../pages/Home/BlogsSection";
 import AboutUs from "../pages/Home/AboutUs";
+import OverviewPage from "../pages/Dashboard/OverView";
 
 export const router = createBrowserRouter([
   {
@@ -143,6 +144,13 @@ export const router = createBrowserRouter([
         element:
           <PrivateRoute>
             <Profile></Profile>
+          </PrivateRoute>
+      },
+      {
+        path: "overView",
+        element:
+          <PrivateRoute>
+            <OverviewPage></OverviewPage>
           </PrivateRoute>
       },
       {
