@@ -25,6 +25,7 @@ import EnrollClass from "../pages/Dashboard/EnrollClass";
 import Payment from "../pages/AllClasses/Payment";
 import EnrollClassDetails from "../pages/Dashboard/EnrollClassDetails";
 import UpcomingFeture from "../pages/Dashboard/UpcomingFeture";
+import BlogsSection from "../pages/Home/BlogsSection";
 
 export const router = createBrowserRouter([
   {
@@ -37,36 +38,40 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "allClasses",
+        path: "/blogs",
+        element: <BlogsSection></BlogsSection>,
+      },
+      {
+        path: "/allClasses",
         element: <AllClasses></AllClasses>,
       },
       {
-        path: "allClasses/enroll-class/:id",
+        path: "/allClasses/enroll-class/:id",
         element: 
         <PrivateRoute>
           <EnrollClass></EnrollClass>
         </PrivateRoute> ,
       },
       {
-        path: "enroll-class/payment",
+        path: "/enroll-class/payment",
         element: 
         <PrivateRoute>
          <Payment></Payment>
         </PrivateRoute> ,
       },
       {
-        path: "teachOnEdu",
+        path: "/teachOnEdu",
         element:
           <PrivateRoute>
             <TeachOnEdu></TeachOnEdu>
           </PrivateRoute>,
       },
       {
-        path: "logIn",
+        path: "/logIn",
         element: <LogIn></LogIn>,
       },
       {
-        path: "register",
+        path: "/register",
         element: <Register></Register>,
       },
       {
@@ -84,7 +89,7 @@ export const router = createBrowserRouter([
     errorElement: <h1>Not Fot any item here</h1>,
     children: [
       {
-        path: "/dashboard",
+        path: "dashboard",
         element:
           <PrivateRoute>
             <DashboardHome></DashboardHome>

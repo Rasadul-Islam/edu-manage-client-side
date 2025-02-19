@@ -23,6 +23,7 @@ const Navbar = () => {
         <li><Link to='/' className='hover:font-bold hover:text-teal-500'>Home</Link ></li>
         <li><Link to='/allClasses' className='hover:font-bold hover:text-teal-500'>All Classes</Link ></li>
         <li><Link to='/teachOnEdu' className='hover:font-bold hover:text-teal-500'>Teach on EduLoop</Link ></li>
+        <li><Link to='/blogs' className='hover:font-bold hover:text-teal-500'>Blogs</Link ></li>
 
     </>
     // User LogOut function

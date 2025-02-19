@@ -78,7 +78,7 @@ const BlogsSection = () => {
               <img
                 src={selectedBlog.image}
                 alt={selectedBlog.title}
-                className="w-full h-72 object-cover mt-3 rounded-lg"
+                className="w-full h-80 object-cover mt-3 rounded-lg"
               />
               <h3 className="text-2xl font-bold mt-4">{selectedBlog.title}</h3>
               <p className="text-sm text-gray-600 mt-1">{selectedBlog.category}</p>
