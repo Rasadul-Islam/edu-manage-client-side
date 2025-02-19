@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import signInLottie from '../../assets/lottie/SignIn.json'
 import Lottie from 'lottie-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -14,6 +14,8 @@ const LogIn = () => {
     const { logInUser, logInWithGoogle } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic();
     const role = 'student';
+    const emailRef = useRef();
+    const passwordRef = useRef();
 
     // Handle Google Sign-In
     const handleGoogleLogIn = () => {
@@ -81,6 +83,14 @@ const LogIn = () => {
         }
     }
 
+    // Handle Admin LogIn (auto-fill email and password)
+    const handleAdminLogIn = (e) => {
+        e.preventDefault();
+        // Set values using refs
+        emailRef.current.value = 'admin@eduloop.com';
+        passwordRef.current.value = 'Admin@eduloop';
+    };
+
 
     return (
         <div>
@@ -92,6 +102,15 @@ const LogIn = () => {
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border-2 border-teal-300 shadow-teal-300 ">
                         {/* top text */}
                         <h1 className='text-xl md:text-4xl font-bold pt-5 px-5'>Log In:</h1>
+                         {/* Admin Login button */}
+                         <div className="form-control mt-5 px-5">
+                            <button
+                                onClick={handleAdminLogIn}
+                                className="btn font-semibold text-lg bg-teal-100"
+                            >
+                                Admin LogIn
+                            </button>
+                        </div>
                         {/* google logIn botton */}
                         <div className="form-control mt-5 px-5">
                             <button
@@ -108,13 +127,13 @@ const LogIn = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" name='email' className="input input-bordered" required />
+                                <input type="email" ref={emailRef} placeholder="email" name='email' className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" name='password' className="input input-bordered" required />
+                                <input type="password" ref={passwordRef} placeholder="password" name='password' className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-5">
                                 <input className='btn bg-teal-300 font-bold text-lg' type="submit" value="Log In" />
