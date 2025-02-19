@@ -54,8 +54,8 @@ const Partners = () => {
       </h2>
       <div className="partner-track flex text-center gap-5 w-fit">
         {partners.map((partner) => (
-          <div key={partner.id} className="partner-logo flex-shrink-0 flex flex-col justify-center items-center border-2 border-teal-400 bg-teal-50 rounded-xl py-2 w-80">
-            <img src={partner.logo} alt={partner.name} className='w-1/3 h-16 rounded-xl' />
+          <div key={partner.id} className="partner-logo flex-shrink-0 flex flex-col justify-center items-center border-2 border-teal-400 bg-teal-50 rounded-lg py-2 w-80">
+            <img src={partner.logo} alt={partner.name} className='w-1/3 h-16 rounded-lg' />
             <p className='w-3/3 px-2'>{partner.description}</p>            
           </div>
 

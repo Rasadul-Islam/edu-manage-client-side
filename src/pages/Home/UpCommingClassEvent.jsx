@@ -77,10 +77,10 @@ const UpCommingClassEvent = () => {
                     )}
                   </p>
                 </div>
-                {/* <a href={`/class/${event.id}`} className="mt-6 inline-block text-center py-2 px-4 bg-teal-600 text-white rounded-md">
+                {/* <a href={`/class/${event.id}`} className="mt-6 inline-block text-center py-2 px-4 bg-teal-600 text-white rounded-lg">
                   Register Now
                 </a> */}
-                <Link to={`/class/${event.id}`} className="absolute bottom-0 right-0 left-0 text-center py-4 bg-teal-400 text-black font-bold rounded-md">
+                <Link to={`/class/${event.id}`} className="absolute bottom-0 right-0 left-0 text-center py-4 bg-teal-400 text-black font-bold rounded-lg">
                 Register Now
                 </Link>
               </div>

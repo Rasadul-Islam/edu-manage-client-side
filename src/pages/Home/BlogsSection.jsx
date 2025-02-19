@@ -43,7 +43,7 @@ const BlogsSection = () => {
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="bg-white shadow-lg p-5 rounded-xl flex flex-col justify-between items-start"
+              className="bg-white shadow-lg p-5 rounded-lg flex flex-col justify-between items-start"
             >
               <img
                 src={blog.image}

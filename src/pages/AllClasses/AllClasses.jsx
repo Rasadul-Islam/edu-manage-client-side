@@ -33,11 +33,11 @@ const AllClasses = () => {
                 {classes.length > 0 ? (
                     classes.map((classItem) => (
                         <div key={classItem._id}>
-                            <div className="p-5 shadow-lg rounded-md bg-white">
+                            <div className="p-5 shadow-lg rounded-lg bg-white">
                                 <img
                                     src={classItem.image}
                                     alt={classItem.title}
-                                    className="w-full h-40 object-cover rounded-md mb-4"
+                                    className="w-full h-40 object-cover rounded-lg mb-4"
                                 />
                                 <h2 className="text-xl font-semibold mb-1">{classItem.title}</h2>
                                 <p className="text-gray-600 mb-1">
@@ -51,7 +51,7 @@ const AllClasses = () => {
                                     Enrolled: {classItem.enrollmentCount} students
                                 </p>
                                 <button
-                                    className="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 w-full"
+                                    className="px-4 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 w-full"
                                     onClick={() => handleEnroll(classItem._id)}
                                 >
                                     Enroll
