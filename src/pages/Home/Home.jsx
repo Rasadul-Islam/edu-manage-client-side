@@ -9,6 +9,7 @@ import BecomeATeacher from './BecomeATeacher';
 import CareerPaths from './CareerPaths';
 import UpCommingClassEvent from './UpCommingClassEvent';
 import BlogsSection from './BlogsSection';
+import AboutUs from './AboutUs';
 
 const Home = () => {
     return (
@@ -27,6 +28,7 @@ const Home = () => {
             <UpCommingClassEvent></UpCommingClassEvent>
             <CareerPaths></CareerPaths>
             <BlogsSection></BlogsSection>
+            <AboutUs></AboutUs>
         </div>
     );
 };
