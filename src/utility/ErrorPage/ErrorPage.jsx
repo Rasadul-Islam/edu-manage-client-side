@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
-        <div className='flex flex-col justify-center items-center w-3/4 mx-auto my-20 bg-gray-300 p-5 rounded-xl'>
+        <div className='flex flex-col justify-center items-center w-2/4 mx-auto my-20 bg-teal-100 p-5 rounded-xl'>
             <div className="w-48 md:w-60">
                 <Lottie animationData={notfound}></Lottie>
             </div>

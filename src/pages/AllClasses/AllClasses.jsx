@@ -33,9 +33,9 @@ const AllClasses = () => {
       <h1 className="text-center font-bold text-2xl md:text-4xl my-5 text-teal-500">All Classes</h1>
 
       {/* Sort Button */}
-      <div className="flex justify-end mb-5">
+      <div className="flex justify-end mb-5 ">
         <select
-          className="p-2 border rounded-md shadow-sm cursor-pointer"
+          className="p-2 border border-teal-300 rounded-lg shadow-lg shadow-teal-200 cursor-pointer"
           value={sortType}
           onChange={(e) => setSortType(e.target.value)}
         >
