@@ -67,7 +67,7 @@ const Navbar = () => {
 
     return (
         <div className='bg-teal-100 sticky top-0 z-40'>
-            <div className="navbar container mx-auto">
+            <div className="navbar container mx-auto max-w-7xl">
                 {/* button section */}
                 <div className="navbar-start">
                     <div className="dropdown ">
@@ -91,10 +91,10 @@ const Navbar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">
+                    <Link to="/" className="btn btn-ghost text-xl">
                         <img src="https://i.ibb.co.com/GkLkJyL/Skill-Loop-Logo-removebg-preview.png" alt="Logo" className='w-8 h-8' />
                         <h1 className='font-bold text-teal-500'>EduLoop</h1>
-                    </a>
+                    </Link>
                 </div>
                 {/* Logo */}
                 <div className="navbar-center hidden md:flex">

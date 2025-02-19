@@ -8,6 +8,7 @@ import EduLoopOverView from './EduLoopOverView';
 import BecomeATeacher from './BecomeATeacher';
 import CareerPaths from './CareerPaths';
 import UpCommingClassEvent from './UpCommingClassEvent';
+import BlogsSection from './BlogsSection';
 
 const Home = () => {
     return (
@@ -25,6 +26,7 @@ const Home = () => {
             <BecomeATeacher></BecomeATeacher>
             <UpCommingClassEvent></UpCommingClassEvent>
             <CareerPaths></CareerPaths>
+            <BlogsSection></BlogsSection>
         </div>
     );
 };
