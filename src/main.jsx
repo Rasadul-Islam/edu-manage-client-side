@@ -19,9 +19,7 @@ createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
-          <div className='container mx-auto max-w-7xl px-2'>
             <RouterProvider router={router} />
-          </div>
         </HelmetProvider>
       </QueryClientProvider>
     </AuthProvider>
